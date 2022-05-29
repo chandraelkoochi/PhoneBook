@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+
+<div class = "myDiv">
+    <button type="button" class="button" onclick="window.location.href='{{ url_for( 'form') }}';">+ Add Data</button>
+</div>
+
+<table>
+    {% if data %}
+    <tr>
+        <th class = "name">Name</th>
+        <th class = "phone">Phone Number</th>
+        <th class = "add">Address</th>
+    </tr>
+    {% else %}
+    <tr>
+        <td>No data entry found</td>
+    </tr>
+    {% endif %}
+    {% for row in data["user_details"] %}
+    <tr>
+
+        <td>{{ row["name"] }}</td>
+        <td>{{ row["phone"] }}</td>
+        <td>{{ row["add"] }}</td>
+
+    </tr>
+    {% endfor %}
+</table><br>
+<button type="button" onclick="window.location.href='{{ url_for( 'form') }}';">+ Add Data</button>
+</body>
+</html>
